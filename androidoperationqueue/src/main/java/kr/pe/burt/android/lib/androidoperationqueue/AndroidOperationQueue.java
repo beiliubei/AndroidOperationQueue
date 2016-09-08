@@ -3,15 +3,9 @@ package kr.pe.burt.android.lib.androidoperationqueue;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Looper;
 import android.os.Process;
 
-import java.util.ArrayList;
-import java.util.concurrent.Executor;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-
 /**
  * Created by burt on 2016. 5. 1..
  */
@@ -208,4 +202,12 @@ public class AndroidOperationQueue {
         return bundle;
     }
 
+    public AndroidOperation getOperation(String tag){
+        for (AndroidOperation operation : operationQueue){
+            if (tag.equalsIgnoreCase(operation.getOperationTag())){
+                return operation;
+            }
+        }
+        return null;
+    }
 }

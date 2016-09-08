@@ -1,11 +1,7 @@
 package kr.pe.burt.android.lib.androidoperationqueue;
 
-
-import android.graphics.Path;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.os.SystemClock;
 
 import java.lang.ref.WeakReference;
 
@@ -83,12 +79,10 @@ public class AndroidOperation extends Thread {
 
     @Override
     public void run() {
-
         AndroidOperationQueue queue = owner.get();
         if(queue != null && queue.isActivated()) {
             operation.run(queue, queue.getBundle());
         }
-
     }
 
     protected void queueing(Handler handler) {
@@ -107,6 +101,28 @@ public class AndroidOperation extends Thread {
                 break;
             case DELAY:
                 handler.postDelayed(this, time);
+        }
+    }
+
+    /**
+     * 获取task tag
+     * @return
+     */
+    public String getOperationTag(){
+        if (operation != null){
+            return operation.tag;
+        }
+        return null;
+    }
+
+    /**
+     * 取消task
+     */
+    public void cancel(){
+        AndroidOperationQueue queue = owner.get();
+        operation.cancel();
+        if(queue != null && queue.isActivated()) {
+            queue.removeOperation(operation);
         }
     }
 }
