@@ -1,11 +1,9 @@
 package kr.pe.burt.android.lib.androidoperationqueue.app;
 
-import android.support.annotation.BoolRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import kr.pe.burt.android.lib.androidoperationqueue.AndroidOperation;
 import kr.pe.burt.android.lib.androidoperationqueue.AndroidOperationQueue;
@@ -38,6 +36,11 @@ public class MainActivity extends AppCompatActivity {
 
                     AndroidOperation.sleep(1000);
                 }
+
+                @Override
+                public void cancel() {
+
+                }
             });
         }
         queue.start();
@@ -47,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
             public void run(AndroidOperationQueue q, Bundle bundle) {
                 bundle.putInt("sum", 1);
             }
+
+            @Override
+            public void cancel() {
+
+            }
         });
 
         queue.addOperation(new Operation() {
@@ -55,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
                 int sum = bundle.getInt("sum");
                 bundle.putInt("sum", sum + 2);
             }
+
+            @Override
+            public void cancel() {
+
+            }
         });
         queue.addOperation(new Operation() {
             @Override
@@ -62,12 +75,22 @@ public class MainActivity extends AppCompatActivity {
                 int sum = bundle.getInt("sum");
                 bundle.putInt("sum", sum + 3);
             }
+
+            @Override
+            public void cancel() {
+
+            }
         });
         queue.addOperation(new Operation() {
             @Override
             public void run(AndroidOperationQueue q, Bundle bundle) {
                 int sum = bundle.getInt("sum");
                 Log.v("SUM", String.format("1+2+3 = %d", sum));
+            }
+
+            @Override
+            public void cancel() {
+
             }
         });
     }
