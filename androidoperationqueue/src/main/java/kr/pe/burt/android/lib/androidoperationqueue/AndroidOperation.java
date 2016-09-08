@@ -115,6 +115,10 @@ public class AndroidOperation extends Thread {
         return null;
     }
 
+    public Operation getOperation(){
+        return operation;
+    }
+
     /**
      * 取消task
      */
