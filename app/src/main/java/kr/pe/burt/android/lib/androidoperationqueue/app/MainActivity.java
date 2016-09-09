@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
                 public void cancel() {
 
                 }
+
+                @Override
+                public String getTag(String identify) {
+                    return identify;
+                }
             });
         }
         queue.start();
@@ -55,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
             public void cancel() {
 
             }
+
+            @Override
+            public String getTag(String identify) {
+                return identify;
+            }
         });
 
         queue.addOperation(new Operation() {
@@ -68,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
             public void cancel() {
 
             }
+
+            @Override
+            public String getTag(String identify) {
+                return identify;
+            }
         });
         queue.addOperation(new Operation() {
             @Override
@@ -80,6 +95,11 @@ public class MainActivity extends AppCompatActivity {
             public void cancel() {
 
             }
+
+            @Override
+            public String getTag(String identify) {
+                return identify;
+            }
         });
         queue.addOperation(new Operation() {
             @Override
@@ -91,6 +111,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void cancel() {
 
+            }
+
+            @Override
+            public String getTag(String identify) {
+                return identify;
             }
         });
     }

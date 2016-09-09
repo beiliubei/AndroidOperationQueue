@@ -8,7 +8,7 @@ import android.os.Bundle;
 public interface Operation {
     void run(AndroidOperationQueue queue, Bundle bundle);
 
-    String tag = null;
+    String getTag(String identify);
 
     void cancel();
 }

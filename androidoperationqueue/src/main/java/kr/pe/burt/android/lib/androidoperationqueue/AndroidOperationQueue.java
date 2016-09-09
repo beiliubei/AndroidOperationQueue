@@ -201,13 +201,4 @@ public class AndroidOperationQueue {
     public Bundle getBundle() {
         return bundle;
     }
-
-    public AndroidOperation getOperation(String tag){
-        for (AndroidOperation operation : operationQueue){
-            if (tag.equalsIgnoreCase(operation.getOperationTag())){
-                return operation;
-            }
-        }
-        return null;
-    }
 }

@@ -104,17 +104,6 @@ public class AndroidOperation extends Thread {
         }
     }
 
-    /**
-     * 获取task tag
-     * @return
-     */
-    public String getOperationTag(){
-        if (operation != null){
-            return operation.tag;
-        }
-        return null;
-    }
-
     public Operation getOperation(){
         return operation;
     }
